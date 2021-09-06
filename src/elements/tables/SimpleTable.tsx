@@ -1,0 +1,26 @@
+import React, { FunctionComponent } from 'react';
+
+import { ISimpleTable } from './interfaces';
+
+const SimpleTable: FunctionComponent<ISimpleTable> = ({ title, items, className }) => {
+    return (
+        <div className={className}>
+            <table className="table table-sm table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            {title}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        items.map((item) => item)
+                    }
+                </tbody>
+            </table>
+        </div>
+    )
+}
+
+export default SimpleTable;
