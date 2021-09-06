@@ -1,3 +1,3 @@
-# react-smallsonline-core-components
+# react-smallsonline-core
 
-This reactJS library is meant to house the reusable components I utilize for multiple web projects.
+This React component library is meant to house the reusable components I utilize for multiple web projects.
