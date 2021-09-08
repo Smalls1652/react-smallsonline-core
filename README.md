@@ -1,3 +1,9 @@
+- [react-smallsonline-core](#react-smallsonline-core)
+  - [🧰 What does this consist of?](#-what-does-this-consist-of)
+  - [🤔 Why make this?](#-why-make-this)
+  - [🤨 Should I use this?](#-should-i-use-this)
+
+
 # react-smallsonline-core
 
 This React component library is meant to house the reusable components I utilize for multiple web projects.
