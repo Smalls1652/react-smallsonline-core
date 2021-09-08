@@ -1,5 +1,5 @@
 export default interface ISimpleListGroup {
-    flush: Boolean;
+    flush: boolean;
     className?: string;
     children?: any;
 }

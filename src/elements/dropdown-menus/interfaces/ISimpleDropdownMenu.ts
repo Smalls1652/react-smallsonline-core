@@ -1,5 +1,5 @@
 export default interface ISimpleDropdownMenu {
     title: string;
-    isNavbarMenu: Boolean;
+    isNavbarMenu: boolean;
     children?: any;
 }
