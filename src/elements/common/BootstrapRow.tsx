@@ -1,34 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { IBootstrapRow } from "./interfaces";
 
 const BootstrapRow = ({ horizontalGutters, verticalGutters, className, children }: IBootstrapRow) => {
-    function evalClassNameList(): string {
-        let classNameList: string[] = [
-            "row"
-        ];
+    const [classNameList, setClassNameList] = useState<string[]>(["row"]);
 
-        if (horizontalGutters != null) {
-            classNameList.push(`gx-${horizontalGutters}`);
-        }
+    useEffect(
+        () => {
 
-        if (verticalGutters != null) {
-            classNameList.push(`gy-${verticalGutters}`);
-        }
+            if (horizontalGutters != null) {
+                setClassNameList(
+                    (current: string[]) => [
+                        ...current,
+                        `gx-${horizontalGutters}`
+                    ]
+                )
+            }
 
-        if (className != null) {
-            classNameList.push(className);
-        }
+            if (verticalGutters != null) {
+                setClassNameList(
+                    (current: string[]) => [
+                        ...current,
+                        `gy-${verticalGutters}`
+                    ]
+                )
+            }
 
-        let classNameListJoined: string = classNameList.join(" ");
-        console.log(classNameListJoined);
-
-        return classNameListJoined;
-    }
+            if (className != null) {
+                setClassNameList(
+                    (current: string[]) => [
+                        ...current,
+                        className
+                    ]
+                )
+            }
+        }, []
+    );
 
     return (
         <div
-            className={evalClassNameList()}
+            className={classNameList.join(" ")}
         >
             {children}
         </div>
