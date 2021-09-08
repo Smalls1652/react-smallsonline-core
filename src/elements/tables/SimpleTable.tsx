@@ -1,8 +1,8 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 
 import { ISimpleTable } from './interfaces';
 
-const SimpleTable: FunctionComponent<ISimpleTable> = ({ title, items, className }) => {
+const SimpleTable = ({ title, items, className }: ISimpleTable) => {
     return (
         <div className={className}>
             <table className="table table-sm table-hover table-striped">

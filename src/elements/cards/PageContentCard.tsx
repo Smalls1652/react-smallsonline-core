@@ -1,8 +1,8 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 
 import { IPageContentCard } from './interfaces/'
 
-const PageContentCard: FunctionComponent<IPageContentCard> = ({ pageTitle, id, className, children }) => {
+const PageContentCard = ({ pageTitle, id, className, children }: IPageContentCard) => {
     return (
         <div id={id} className={className}>
             <div className="card shadow-lg">

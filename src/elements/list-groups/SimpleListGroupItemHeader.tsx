@@ -1,8 +1,8 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 
 import { ISimpleListGroupHeader } from './interfaces';
 
-const SimpleListGroupItemHeader: FunctionComponent<ISimpleListGroupHeader> = ({ children }) => {
+const SimpleListGroupItemHeader = ({ children }: ISimpleListGroupHeader) => {
     return (
         <h5>
             {children}

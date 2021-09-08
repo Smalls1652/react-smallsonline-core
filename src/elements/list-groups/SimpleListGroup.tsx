@@ -1,8 +1,8 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 
 import { ISimpleListGroup } from './interfaces'
 
-const SimpleListGroup: FunctionComponent<ISimpleListGroup> = ({ flush = false, className, children }) => {
+const SimpleListGroup = ({ flush = false, className, children }: ISimpleListGroup) => {
 
     return (
         <div className={className}>
