@@ -1,8 +1,8 @@
-import React from "react";
+import React, { ReactElement } from "react";
 
 import { ISimpleListGroup } from './interfaces'
 
-const SimpleListGroup = ({ flush = false, className, children }: ISimpleListGroup) => {
+const SimpleListGroup = ({ flush = false, className, children }: ISimpleListGroup): ReactElement => {
 
     return (
         <div className={className}>

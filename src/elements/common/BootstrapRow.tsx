@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 
 import { IBootstrapRow } from "./interfaces";
 
-const BootstrapRow = ({ horizontalGutters, verticalGutters, className, children }: IBootstrapRow) => {
+const BootstrapRow = ({ horizontalGutters, verticalGutters, className, children }: IBootstrapRow): ReactElement => {
     const [classNameList, setClassNameList] = useState<string[]>(["row"]);
 
     useEffect(

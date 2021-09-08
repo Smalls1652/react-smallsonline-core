@@ -1,8 +1,8 @@
-import React from "react";
+import React, { ReactElement } from "react";
 
 import { ISimpleTable } from './interfaces';
 
-const SimpleTable = ({ title, items, className }: ISimpleTable) => {
+const SimpleTable = ({ title, items, className }: ISimpleTable): ReactElement => {
     return (
         <div className={className}>
             <table className="table table-sm table-hover table-striped">

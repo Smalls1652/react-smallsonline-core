@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { ReactElement, useState } from "react";
 
 import { ISimpleDropdownMenu } from './interfaces';
 
-const SimpleDropdownMenu= ({ title, isNavbarMenu, children }: ISimpleDropdownMenu) => {
+const SimpleDropdownMenu= ({ title, isNavbarMenu, children }: ISimpleDropdownMenu): ReactElement => {
     const [menuToggled, setMenuToggled] = useState(false);
 
     const toggleMenu = () => {

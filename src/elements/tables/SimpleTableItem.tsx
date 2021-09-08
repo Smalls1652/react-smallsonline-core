@@ -1,8 +1,8 @@
-import React from "react";
+import React, { ReactElement } from "react";
 
 import { ISimpleTableItem } from './interfaces';
 
-const SimpleTableItem = ({ children }: ISimpleTableItem) => {
+const SimpleTableItem = ({ children }: ISimpleTableItem): ReactElement => {
     return (
         <tr>
             <td>
