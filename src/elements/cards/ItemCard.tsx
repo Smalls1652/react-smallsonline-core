@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 
-import { IItemCard } from './interfaces/index';
+import { IItemCard } from '../../interfaces';
 
 const ItemCard = ({ titleSection, subtitle, footerSection, className, children }: IItemCard): ReactElement => {
     const renderTitleSection = () => {

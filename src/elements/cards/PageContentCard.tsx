@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 
-import { IPageContentCard } from './interfaces/'
+import { IPageContentCard } from '../../interfaces';
 
 const PageContentCard = ({ pageTitle, id, className, children }: IPageContentCard): ReactElement => {
     return (

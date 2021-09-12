@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 
-import { ISimpleListGroupItem } from './interfaces';
+import { ISimpleListGroupItem } from '../../interfaces';
 
 const SimpleListGroupItem = ({ className, children }: ISimpleListGroupItem): ReactElement => {
     return (

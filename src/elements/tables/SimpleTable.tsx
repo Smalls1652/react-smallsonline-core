@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 
-import { ISimpleTable } from './interfaces';
+import { ISimpleTable } from '../../interfaces';
 
 const SimpleTable = ({ title, items, className }: ISimpleTable): ReactElement => {
     return (

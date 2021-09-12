@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 
-import { ISimpleListGroupHeader } from './interfaces';
+import { ISimpleListGroupHeader } from '../../interfaces';
 
 const SimpleListGroupItemHeader = ({ children }: ISimpleListGroupHeader): ReactElement => {
     return (
