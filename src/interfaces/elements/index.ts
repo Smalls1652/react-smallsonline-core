@@ -1,4 +1,5 @@
 import IBootstrapRow from "./IBootstrapRow";
+import IBootstrapCol from "./IBootstrapCol";
 import IItemCard from "./IItemCard";
 import IPageContentCard from "./IPageContentCard";
 import ISimpleDropdownMenu from "./ISimpleDropdownMenu";
@@ -10,6 +11,7 @@ import ISimpleTableItem from "./ISimpleTableItem";
 
 export type {
     IBootstrapRow,
+    IBootstrapCol,
     IItemCard,
     IPageContentCard,
     ISimpleDropdownMenu,

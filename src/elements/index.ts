@@ -1,4 +1,4 @@
-import { BootstrapRow } from './common';
+import { BootstrapRow, BootstrapCol } from './common';
 
 import { PageContentCard, ItemCard } from './cards';
 
@@ -10,6 +10,7 @@ import { SimpleDropdownMenu } from './dropdown-menus';
 
 export {
     BootstrapRow,
+    BootstrapCol,
     PageContentCard,
     ItemCard,
     SimpleTable,
