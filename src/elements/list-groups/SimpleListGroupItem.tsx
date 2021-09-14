@@ -1,8 +1,8 @@
-import React, { FunctionComponent } from 'react';
+import React, { ReactElement } from "react";
 
-import { ISimpleListGroupItem } from './interfaces';
+import { ISimpleListGroupItem } from '../../interfaces';
 
-const SimpleListGroupItem: FunctionComponent<ISimpleListGroupItem> = ({ className, children }) => {
+const SimpleListGroupItem = ({ className, children }: ISimpleListGroupItem): ReactElement => {
     return (
         <div className="list-group-item">
             <div className={className}>

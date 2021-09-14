@@ -1,8 +1,8 @@
-import React, { FunctionComponent } from 'react';
+import React, { ReactElement } from "react";
 
-import { IItemCard } from './interfaces/index';
+import { IItemCard } from '../../interfaces';
 
-const ItemCard: FunctionComponent<IItemCard> = ({ titleSection, subtitle, footerSection, className, children }) => {
+const ItemCard = ({ titleSection, subtitle, footerSection, className, children }: IItemCard): ReactElement => {
     const renderTitleSection = () => {
         if (titleSection != null) {
             return (

@@ -4,4 +4,4 @@ import SimpleTableItem from "./SimpleTableItem";
 export {
     SimpleTable,
     SimpleTableItem
-};
+}

@@ -1,8 +1,8 @@
-import React, { FunctionComponent } from 'react';
+import React, { ReactElement } from "react";
 
-import { ISimpleTableItem } from './interfaces';
+import { ISimpleTableItem } from '../../interfaces';
 
-const SimpleTableItem: FunctionComponent<ISimpleTableItem> = ({ children }) => {
+const SimpleTableItem = ({ children }: ISimpleTableItem): ReactElement => {
     return (
         <tr>
             <td>
