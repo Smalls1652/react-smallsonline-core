@@ -23,7 +23,8 @@
     "clean": "rimraf dist",
     "build": "npm run clean && npm run build:esm && npm run build:cjs",
     "build:esm": "tsc",
-    "build:cjs": "tsc --module commonjs --outDir dist/cjs"
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
+    "eject": "react-scripts eject"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.8",
