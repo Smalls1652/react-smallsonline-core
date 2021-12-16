@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow
+name: Build
+on:
+  - push
+  - pull_request
+  - workflow_dispatch
+jobs:
+  build:
+    name: Build component library
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v2.5.0
+        with:
+          node-version: 16
+
+      - name: Install Node modules
+        run: npm install
+
+      - name: Build library
+        run: npm run build
