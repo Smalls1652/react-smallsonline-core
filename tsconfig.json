@@ -1,21 +1,19 @@
 {
     "compilerOptions": {
-        "allowSyntheticDefaultImports": true,
-        "declaration": true,
-        "declarationDir": "dist",
-        "importHelpers": true,
-        "isolatedModules": true,
-        "jsx": "react-jsx",
-        "lib": [
-            "ES6",
-            "DOM"
-        ],
-        "module": "CommonJS",
-        "moduleResolution": "Node",
-        "outDir": "dist/esm",
+        "target": "es6",
+        "module": "esnext",
+        "jsx": "react",
         "sourceMap": true,
-        "target": "ES6",
-        "typeRoots": ["node_modules/@types"]
+        "outDir": "dist",
+        "strict": true,
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "declaration": true,
+        "declarationDir": "types",
+        "emitDeclarationOnly": true
     },
     "include": [
         "src"
