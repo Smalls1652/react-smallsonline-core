@@ -1,6 +1,6 @@
 {
   "name": "@smalls1652/smallsonline-core",
-  "version": "2021.8.2",
+  "version": "2021.8.3-beta.0",
   "license": "MIT",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
