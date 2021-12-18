@@ -3,6 +3,7 @@
         <Publish_Path>$(MSBuildProjectDirectory)\publish</Publish_Path>
         <NodeModules_Path>$(MSBuildProjectDirectory)\node_modules</NodeModules_Path>
         <PackageLock_Path>$(MSBuildProjectDirectory)\package-lock.json</PackageLock_Path>
+        <Src_Path>$(MSBuildProjectDirectory)\src</Src_Path>
         <Dist_Path>$(MSBuildProjectDirectory)\dist</Dist_Path>
         <ReinitForce>false</ReinitForce>
     </PropertyGroup>
@@ -55,6 +56,7 @@
         <CallTarget Targets="CompileTypeScript" />
         <ItemGroup>
             <DistDirFiles Include="$(Dist_Path)\**\*.*" />
+            <SrcDirFiles Include="$(Src_Path)\**\*.*" />
             <PackageFiles Include="$(MSBuildProjectDirectory)\package.json;$(MSBuildProjectDirectory)\README.md;$(MSBuildProjectDirectory)\LICENSE" />
         </ItemGroup>
 
@@ -63,6 +65,12 @@
         <Copy
             SourceFiles="@(DistDirFiles)"
             DestinationFiles="@(DistDirFiles->'$(Publish_Path)\dist\%(RecursiveDir)%(Filename)%(Extension)')"
+        />
+
+        <Message Text="- Copying -> Source files" Importance="high" />
+        <Copy
+            SourceFiles="@(SrcDirFiles)"
+            DestinationFiles="@(SrcDirFiles->'$(Publish_Path)\src\%(RecursiveDir)%(Filename)%(Extension)')"
         />
 
         <Message Text="- Copying other package files" Importance="high" />
