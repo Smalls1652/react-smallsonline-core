@@ -2,7 +2,7 @@ name: Build and push package to GitHub
 
 on:
   release:
-    types: [ published ]
+    types: [published]
 
 jobs:
   create-package:
@@ -13,21 +13,23 @@ jobs:
       packages: write
 
     steps:
-    - uses: actions/checkout@v2
-      
-    - name: Setup NodeJS
-      uses: actions/setup-node@v2.5.0
-      with:
-        node-version: 16
-        registry-url: 'https://npm.pkg.github.com'
+      - uses: actions/checkout@v2
 
-    - name: Install Node modules
-      run: npm install
+      - name: Setup NodeJS
+        uses: actions/setup-node@v2.5.0
+        with:
+          node-version: 16
+          registry-url: "https://npm.pkg.github.com"
 
-    - name: Build library
-      run: npm run build
+      - name: Install .NET SDK
+        uses: actions/setup-dotnet@v1.9.0
+        with:
+          dotnet-version: 6.0.x
 
-    - name: Publish package
-      run: npm publish
-      env:
-       NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build component library
+        run: dotnet msbuild -target:"CreatePublishedModule"
+
+      - name: Publish package
+        run: npm publish ./publish/
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

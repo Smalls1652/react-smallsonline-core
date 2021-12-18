@@ -1,0 +1,80 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <Publish_Path>$(MSBuildProjectDirectory)\publish</Publish_Path>
+        <NodeModules_Path>$(MSBuildProjectDirectory)\node_modules</NodeModules_Path>
+        <PackageLock_Path>$(MSBuildProjectDirectory)\package-lock.json</PackageLock_Path>
+        <Dist_Path>$(MSBuildProjectDirectory)\dist</Dist_Path>
+        <ReinitForce>false</ReinitForce>
+    </PropertyGroup>
+
+    <Target Name="NpmReinit">
+        <Message Text="Starting re-initialization of NPM packages" Importance="high" />
+        <Message Text="---------" Importance="high" />
+        <Message Text="%0D%0A" Importance="high" />
+
+        <Warning Text="You must set the property for 'ReinitForce' to true." Condition="'$(ReinitForce)' == 'false'" />
+
+        <CallTarget Targets="NpmCleanNodeModules;NpmCleanPackageLock;NpmInstall" Condition="'$(ReinitForce)' == 'true'" />
+    </Target>
+
+    <Target Name="NpmCleanNodeModules">
+        <Message Text="- Removing -> $(NodeModules_Path)" Importance="high" />
+        <RemoveDir Directories="$(NodeModules_Path)" Condition="Exists('$(NodeModules_Path)')" />
+    </Target>
+
+    <Target Name="NpmCleanPackageLock">
+        <Message Text="- Removing -> $(PackageLock_Path)" Importance="high" />
+        <Delete Files="$(PackageLock_Path)" Condition="Exists('$(PackageLock_Path)')" />
+    </Target>
+
+    <Target Name="NpmInstall">
+        <Message Text="- Running command -> npm install" Importance="high" />
+
+        <Exec Command="npm install &gt; NUL" />
+    </Target>
+
+    <Target Name="CompileTypescript">
+        <Message Text="- Compiling Typescript code" Importance="high" />
+        <Exec Command="npm run build &gt; NUL" />
+    </Target>
+
+    <Target Name="CreatePublishedModule">
+        <Message Text="Starting to compile the module" Importance="high" />
+        <Message Text="---------" Importance="high" />
+        <Message Text="" Importance="high" />
+
+        <RemoveDir Directories="$(Publish_Path)" Condition="Exists('$(Publish_Path)')" />
+        <MakeDir Directories="$(Publish_Path)" />
+
+        <CallTarget Targets="NpmInstall" />
+        <!--
+            # Gonna have NPM run install anyway, but I'm going to leave this here for the time being.
+        <CallTarget Targets="NpmInstall" Condition="(!Exists('$(NodeModules_Path)') And !Exists('$(PackageLock_Path)')) Or (!Exists('$(NodeModules_Path)'))" />
+        -->
+
+        <CallTarget Targets="CompileTypeScript" />
+        <ItemGroup>
+            <DistDirFiles Include="$(Dist_Path)\**\*.*" />
+            <PackageFiles Include="$(MSBuildProjectDirectory)\package.json;$(MSBuildProjectDirectory)\README.md;$(MSBuildProjectDirectory)\LICENSE" />
+        </ItemGroup>
+
+        <Message Text="- Copying -> Compiled TypeScript files" Importance="high" />
+            <Message Text="@(DistDirFiles->'%09- .\dist\%(Filename)%(Extension) -> .\publish\dist\%(RecursiveDir)%(Filename)%(Extension)', '%0D%0A')" Importance="high" />
+        <Copy
+            SourceFiles="@(DistDirFiles)"
+            DestinationFiles="@(DistDirFiles->'$(Publish_Path)\dist\%(RecursiveDir)%(Filename)%(Extension)')"
+        />
+
+        <Message Text="- Copying other package files" Importance="high" />
+        <Message Text="@(PackageFiles->'%09- .\%(Filename)%(Extension) -> .\publish\%(Filename)%(Extension)', '%0D%0A')" Importance="high" />
+        <Copy
+            SourceFiles="@(PackageFiles)"
+            DestinationFiles="@(PackageFiles->'$(Publish_Path)\%(RecursiveDir)%(Filename)%(Extension)')"
+        />
+
+        <Message Text="Module compiled." Importance="high" />
+        <Message Text="---------" Importance="high" />
+        <Message Text="%0D%0A" Importance="high" />
+        <Message Text="Compiled path -> $(Publish_Path)" Importance="high" />
+    </Target>
+</Project>
