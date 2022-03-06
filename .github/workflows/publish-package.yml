@@ -1,0 +1,35 @@
+name: Build and push package to GitHub
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  create-package:
+    name: Create and publish package
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v2.5.0
+        with:
+          node-version: 16
+          registry-url: "https://npm.pkg.github.com"
+
+      - name: Install .NET SDK
+        uses: actions/setup-dotnet@v1.9.0
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Build component library
+        run: dotnet msbuild -target:"CreatePublishedModule"
+
+      - name: Publish package
+        run: npm publish ./publish/
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
