@@ -40,7 +40,7 @@
     "@typescript-eslint/eslint-plugin": "^4.31.0",
     "@typescript-eslint/parser": "^4.31.0",
     "cross-env": "^7.0.3",
-    "eslint": "^8.10.0",
+    "eslint": "^8.12.0",
     "eslint-plugin-react": "^7.29.3",
     "eslint-plugin-react-hooks": "^4.3.0",
     "rollup": "^2.69.2",
